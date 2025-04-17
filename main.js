@@ -12,7 +12,7 @@ const mapPersons = new Map()
 let counter = 0;
 let error = false;
 
-
+// table
 const table = document.createElement("table");
 table.style.width = "500px";
 table.style.margin = "auto";
@@ -32,8 +32,7 @@ table.style.border = "1px solid black";
             thead.style.backgroundColor = "lightblue";
            
 
-
-
+// addeventlisteners
 
 nameField.addEventListener("input",(event)=>{
     const input =  event.target
@@ -95,7 +94,7 @@ timeField.addEventListener("input",(event)=>{
             // check if date is valid
             let appointment = false;
             mapPersons.forEach((value) => {
-                if (value.date === person.date && value.time === person.time) {
+                if (value.date === person.date && value.timeSlot === person.timeSlot) {
                     appointment = true;
                 }
             });

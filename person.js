@@ -7,4 +7,8 @@ export default class Person {
     this.time = time;
     this.participants = participants;
   }
+  get timeSlot() {
+    const [h] = this.time.split("h").map(Number);
+    return h < 12 ? "AM" : "PM";
+  }
 }
