@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./main.js" type="module" defer></script>
+    <title>Exercice formulaire</title>
+</head>
+<body>
+    <h1> Reservation de rendez-vous</h1>
+    <form action="#">
+        <label for="name">Nom:</label>
+        <input type="text" id="name" name="name">
+        <p id="nameAlert">⚠️ Le nom doit contenir au moins 3 lettres et uniquement des lettres.</p>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date">
+
+        <label for="time">Heure de rendez-vous:</label>
+        <input type="time" id="time" name="time">
+        <p id="timeAlert">⚠️ Les rendez-vous sont disponibles uniquement entre 9h00 et 18h00.</p>
+        
+        <label for="nbParticipants">Nombre de participants</label>
+        <input type="number" id="nbParticipants" name="nbParticipants"> 
+        <p id="participantAlert">⚠️ “Le nombre de participants doit être entre 0 et 10.”</p>
+        <button type="submit">Réserver</button>
+    </form>
+</body>
+</html>
