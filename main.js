@@ -13,6 +13,27 @@ let counter = 0;
 let error = false;
 
 
+const table = document.createElement("table");
+table.style.width = "500px";
+table.style.margin = "auto";
+table.style.height = "auto";
+const thead = document.createElement("thead");
+const headerRow = document.createElement("tr");
+
+["Nom", "Date", "Heure", "Participants"].forEach(tittle => {
+    const th = document.createElement("th");
+    th.innerText = tittle;
+    headerRow.appendChild(th);
+});
+thead.appendChild(headerRow);
+table.appendChild(thead);
+table.style.border = "1px solid black";
+            table.style.textAlign = "center";
+            thead.style.backgroundColor = "lightblue";
+           
+
+
+
 
 nameField.addEventListener("input",(event)=>{
     const input =  event.target
@@ -36,7 +57,7 @@ timeField.addEventListener("input",(event)=>{
         return hours + minutes / 60;
     }
     let transformedTime = timeStringToFloat(value);
-    console.log(transformedTime);
+    // console.log(transformedTime);
     
     if(!value || transformedTime < 9 || transformedTime > 18){
         timeAlert.style.display = "block"
@@ -63,13 +84,15 @@ timeField.addEventListener("input",(event)=>{
         event.preventDefault()
         
         if (!error) {
-    
+            // object
             const person = new Person (
                 nameField.value,
                 dateField.value,
                 timeField.value,
                 participantField.value
             )
+
+            // check if date is valid
             let appointment = false;
             mapPersons.forEach((value) => {
                 if (value.date === person.date && value.time === person.time) {
@@ -82,25 +105,11 @@ timeField.addEventListener("input",(event)=>{
                 return;
             }
             
+            // map setings
             mapPersons.set(counter++,person); 
-            console.log(mapPersons);
-            
-            
-            const table = document.createElement("table");
-            table.style.width = "500px";
-            table.style.margin = "auto";
-            table.style.height = "auto";
-            const thead = document.createElement("thead");
-            const headerRow = document.createElement("tr");
-            
-            ["Nom", "Date", "Heure", "Participants"].forEach(tittle => {
-                const th = document.createElement("th");
-                th.innerText = tittle;
-                headerRow.appendChild(th);
-            });
-            thead.appendChild(headerRow);
-            table.appendChild(thead);
-            
+            // console.log(mapPersons);
+        
+            // table
             const tbody = document.createElement("tbody");
             const tr = document.createElement("tr");
             const tdName = document.createElement("td");
@@ -111,7 +120,6 @@ timeField.addEventListener("input",(event)=>{
             tdTime.innerText = person.time;
             const tdParticipants = document.createElement("td");
             tdParticipants.innerText = person.participants;
-            
             tr.appendChild(tdName);
             tr.appendChild(tdDate);
             tr.appendChild(tdTime);
@@ -119,12 +127,10 @@ timeField.addEventListener("input",(event)=>{
             tbody.appendChild(tr);
             
             table.appendChild(tbody);
-            table.style.border = "1px solid black";
-            table.style.textAlign = "center";
-            thead.style.backgroundColor = "lightblue";
+            document.body.appendChild(table);
             tr.style.padding = "10px";
             tr.style.border = "1px solid black";
-            document.body.appendChild(table);
+
         }   else {
             setTimeout(alert("⚠️ Veuillez remplir le formulaire correctement.", 5000));
             }
