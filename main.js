@@ -3,15 +3,13 @@ const nameField = document.querySelector("#name");
 const dateField = document.querySelector("#date");
 const timeField = document.querySelector("#time");
 const participantField = document.querySelector("#nbParticipants");
-const submitButton = document.querySelector("button");
 const form = document.querySelector("form");
-const nameAlert = document.querySelector("#nameAlert");
-const dateAlert = document.querySelector("#dateAlert"); 
+const nameAlert = document.querySelector("#nameAlert");; 
 const timeAlert = document.querySelector("#timeAlert");
 const participantAlert = document.querySelector("#participantAlert");
 
 const mapPersons = new Map()
-     
+let counter = 0;
 
 form.addEventListener("submit",(event)=>{
     event.preventDefault()
@@ -22,8 +20,20 @@ form.addEventListener("submit",(event)=>{
          timeField.value,
          participantField.value
     )
+    let appointment = false;
+    mapPersons.forEach((value) => {
+        if (value.date === person.date && value.time === person.time) {
+            appointment = true;
+        }
+    });
     
-      
+    if (appointment) {
+        alert("⚠️ Ce créneau est déjà réservé.");
+        return;
+    }
+    
+    mapPersons.set(counter++,person); 
+    console.log(mapPersons);
 
 
     const table = document.createElement("table");
@@ -66,12 +76,10 @@ form.addEventListener("submit",(event)=>{
     tr.style.border = "1px solid black";
     document.body.appendChild(table);
     
-    return person
+    
+    
 });
 
-mapPersons.set("time",person.time); 
-mapPersons.set("date",person.date);
-console.log(mapPersons);
 
 nameField.addEventListener("input",(event)=>{
     const input =  event.target
