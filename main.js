@@ -12,7 +12,7 @@ const mapPersons = new Map()
 let counter = 0;
 let error = false;
 
-// table
+table
 const table = document.createElement("table");
 table.style.width = "500px";
 table.style.margin = "auto";
@@ -32,7 +32,7 @@ table.style.border = "1px solid black";
             thead.style.backgroundColor = "lightblue";
            
 
-// addeventlisteners
+addeventlisteners
 
 nameField.addEventListener("input",(event)=>{
     const input =  event.target
@@ -104,11 +104,24 @@ timeField.addEventListener("input",(event)=>{
                 return;
             }
             
-            // map setings
+            const date = new Date(person.date);
+            const today = new Date();
+            if (date < today) {
+                setTimeout(alert("⚠️ Date antérieure impossible.", 3000));
+                return;
+              }; 
+
+            // map setings + to json
             mapPersons.set(counter++,person); 
-            // console.log(mapPersons);
+            const mapToJson = (mapPersons) => {
+                return JSON.stringify(Object.fromEntries(mapPersons));
+              };
+              localStorage.setItem("appointments", mapToJson(mapPersons));
+              console.log(localStorage.getItem("appointments"));
+
+
         
-            // table
+            table
             const tbody = document.createElement("tbody");
             const tr = document.createElement("tr");
             const tdName = document.createElement("td");
@@ -135,3 +148,55 @@ timeField.addEventListener("input",(event)=>{
             }
         });
     
+//         // table of appointments
+//         const createTable = () => {
+//           const getStorage = localStorage.getItem("appointments");
+//           const parsedStorage = JSON.parse(getStorage);
+
+//           const keys = Object.keys(parsedStorage); 
+          
+          
+          
+//           const tableA = document.createElement('table');
+//           const header = document.createElement('tr');
+//           const thead = document.createElement("thead");
+
+        
+//           ["Nom", "Date", "Heure", "Participants"].forEach((titre) => {
+//             const th = document.createElement("th");
+//             th.innerText = titre;
+//             header.appendChild(th);
+//           });
+        
+//           thead.appendChild(header);
+//           tableA.appendChild(thead);
+        
+//           const tbody = document.createElement("tbody");
+        
+//           keys.forEach((key) => {
+//             const person = parsedStorage[key];
+//             const tr = document.createElement("tr");
+        
+//             const tdName = document.createElement("td");
+//             tdName.innerText = person.name;
+        
+//             const tdDate = document.createElement("td");
+//             tdDate.innerText = person.date;
+        
+//             const tdTime = document.createElement("td");
+//             tdTime.innerText = person.time;
+        
+//             const tdParticipants = document.createElement("td");
+//             tdParticipants.innerText = person.participants;
+        
+//             tr.appendChild(tdName);
+//             tr.appendChild(tdDate);
+//             tr.appendChild(tdTime);
+//             tr.appendChild(tdParticipants);
+//             tbody.appendChild(tr);
+//           });
+        
+//           tableA.appendChild(tbody);
+//           document.body.appendChild(tableA);
+//         }
+// createTable();
