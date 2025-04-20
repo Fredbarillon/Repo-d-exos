@@ -1,6 +1,11 @@
 // person.js
 
 export default class Person {
+  name
+  date
+  time
+  participants
+  
   constructor(name, date, time, participants) {
     this.name = name;
     this.date = date;

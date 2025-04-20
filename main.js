@@ -12,7 +12,7 @@ const mapPersons = new Map()
 let counter = 0;
 let error = false;
 
-table
+// table
 const table = document.createElement("table");
 table.style.width = "500px";
 table.style.margin = "auto";
@@ -32,7 +32,7 @@ table.style.border = "1px solid black";
             thead.style.backgroundColor = "lightblue";
            
 
-addeventlisteners
+//addeventlisteners
 
 nameField.addEventListener("input",(event)=>{
     const input =  event.target
@@ -50,13 +50,13 @@ timeField.addEventListener("input",(event)=>{
     const input =event.target
     const value = input.value
     function timeStringToFloat(value) {
-        let hoursMinutes = value.split(/[.:]/);
-        let hours = parseInt(hoursMinutes[0], 10);
-        let minutes = hoursMinutes[1] ? parseInt(hoursMinutes[1], 10) : 0;
-        return hours + minutes / 60;
+        let hoursMinutes = value.split(":");
+        // let hours = parseInt(hoursMinutes[0], 10);
+        // let minutes = hoursMinutes[1] ? parseInt(hoursMinutes[1], 10) : 0;
+        return hoursMinutes;;
     }
     let transformedTime = timeStringToFloat(value);
-    // console.log(transformedTime);
+    console.log(transformedTime);
     
     if(!value || transformedTime < 9 || transformedTime > 18){
         timeAlert.style.display = "block"
@@ -117,11 +117,11 @@ timeField.addEventListener("input",(event)=>{
                 return JSON.stringify(Object.fromEntries(mapPersons));
               };
               localStorage.setItem("appointments", mapToJson(mapPersons));
-              console.log(localStorage.getItem("appointments"));
+            //   console.log(localStorage.getItem("appointments"));
 
 
         
-            table
+            //table
             const tbody = document.createElement("tbody");
             const tr = document.createElement("tr");
             const tdName = document.createElement("td");
