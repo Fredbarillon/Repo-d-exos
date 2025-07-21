@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>resultats de recherche</title>
+</head>
+<body>
+<span th:replace="~{home :: navBar}"></span>
+<h1>resultats de recherche</h1>
+
+<div th:if="${searchTerm != null}">
+  <h2>recherche: "<span th:text="${searchTerm}"></span>"</h2>
+</div>
+
+<div th:if="${students != null and !students.isEmpty()}">
+  <h3>etudiants trouvés :</h3>
+  <ul>
+    <li th:each="s : ${students}">
+      <span th:text="${s.getNom()} + ' ' + ${s.getPrenom()}"></span>
+      <a th:href="@{/student/detail/{id}(id=${s.getId()})}">Voir détails</a>
+    </li>
+  </ul>
+</div>
+
+<div th:if="${students == null or students.isEmpty()}">
+  <p>aucun etudiant trouvé.</p>
+</div>
+
+</body>
+</html>

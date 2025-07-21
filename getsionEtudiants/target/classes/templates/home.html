@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+</head>
+<body>
+<th:block th:fragment="navBar">
+    <nav>
+        <a th:href="@{/student}">Accueil</a>
+        <a th:href="@{/student/list}">Liste des étudiants</a>
+        <a th:href="@{/student/add}">Inscription</a>
+    </nav>
+</th:block>
+
+<h1>Page d'accueil</h1>
+
+<div>
+    <h2>menu principal</h2>
+    <p><a th:href="@{/student/list}">voir la liste des étudiants</a></p>
+    <p><a th:href="@{/student/add}">inscrire un nouvel étudiant</a></p>
+
+    <h3>Rechercher un étudiant</h3>
+    <form th:action="@{/student/search}" method="get">
+        <label for="nom">Recherche par nom :</label>
+        <input type="text" id="nom" name="nom" required>
+        <button type="submit">rechercher</button>
+    </form>
+</div>
+
+</body>
+</html>
