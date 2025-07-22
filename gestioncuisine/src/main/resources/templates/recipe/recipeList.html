@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des recettes</title>
+</head>
+<body>
+<h1>Liste des recettes</h1>
+
+<div th:if="${recipes != null and not #lists.isEmpty(recipes)}">
+    <table>
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Catégorie</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="recipe : ${recipes}">
+            <td th:text="${recipe.name}"></td>
+            <td th:text="${recipe.categoryId}">--</td>
+            <td>
+                <a th:href="@{/recipe/detail/{id}(id=${recipe.id})}">Voir</a> |
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:if="${recipes == null or #lists.isEmpty(recipes)}">
+    <p>aucune recette trouvée.</p>
+</div>
+
+<p><a th:href="@{/recipe/add}">ajouter une nouvelle recette</a></p>
+<a th:href="@{/recipe}">retour à l'accueil</a>
+</body>
+</html>
