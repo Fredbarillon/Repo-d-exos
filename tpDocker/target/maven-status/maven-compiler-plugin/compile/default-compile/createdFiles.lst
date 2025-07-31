@@ -1,0 +1,9 @@
+org\app\tpdocker\model\dto\FartDTO.class
+org\app\tpdocker\interfaces\FartInterface.class
+org\app\tpdocker\mapper\FartMapper.class
+org\app\tpdocker\service\FartService.class
+org\app\tpdocker\controller\FartController.class
+org\app\tpdocker\TpDockerApplication.class
+org\app\tpdocker\model\entity\Fart.class
+org\app\tpdocker\repository\FartRepository.class
+org\app\tpdocker\controller\HomeController.class
