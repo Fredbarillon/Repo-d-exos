@@ -1,0 +1,52 @@
+services:
+
+  mongodb:
+    image: mongo:7
+
+    container_name: logs-mongodb
+
+    restart: unless-stopped
+
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: logsDB
+
+#    ports:
+#      - "27018:27017"
+
+    volumes:
+      - logs-mongo-data:/data/db
+
+    networks:
+      - logs-network
+
+    healthcheck:
+      test: [ "CMD", "mongosh", "--eval", "db.adminCommand('ping')" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
+
+  api-logs:
+    build: .
+    container_name: api-logs
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - logs-network
+    ports:
+      - "8050:8080"
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://admin:password@logs-mongodb:27017/logsDB?authSource=admin
+      SERVER_PORT: 8080
+
+
+
+networks:
+  logs-network:
+    driver: bridge
+
+volumes:
+  logs-mongo-data:
