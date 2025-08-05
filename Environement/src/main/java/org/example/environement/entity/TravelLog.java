@@ -38,12 +38,12 @@ public class TravelLog {
     public void calculateCO2() {
         if (distanceKm != null && mode != null) {
             double gazRelease = switch (mode) {
-                case CAR -> 0.192;
-                case PLANE -> 0.255;
-                case TRAIN -> 0.041;
+                case CAR -> 0.22;
+                case PLANE -> 0.259;
+                case TRAIN -> 0.03;
                 case BIKE -> 0.0;
                 case WALKING -> 0.0;
-                case BUS -> 0.050;
+                case BUS -> 0.11;
             };
             this.estimationCo2Kg = distanceKm * gazRelease;
         } else {
@@ -51,3 +51,4 @@ public class TravelLog {
         }
     }
 }
+
