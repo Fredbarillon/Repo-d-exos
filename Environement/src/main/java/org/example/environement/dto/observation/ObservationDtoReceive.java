@@ -28,6 +28,10 @@ public class ObservationDtoReceive {
     private List<TravelLogDtoReceive> travelLogs;
 
     public Observation dtoToEntity (SpecieRepository specieRepository){
+        if (observationDateStr == null || observationDateStr.isBlank()) {
+            throw new IllegalArgumentException("Le champ 'observationDateStr' est obligatoire (format attendu : dd-MM-yyyy)");
+        }
+        
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         Observation observationCreated = Observation.builder()
                 .observerName(this.getObserverName())
@@ -44,3 +48,4 @@ public class ObservationDtoReceive {
         return observationCreated;
     }
 }
+
