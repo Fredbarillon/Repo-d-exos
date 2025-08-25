@@ -1,0 +1,22 @@
+{
+  "name": "typesrcriptskeleton",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build":"tsf",
+    "start":"node dist/index.js", 
+    "dev":"ts-node src/index.ts",
+    "clean":"rimraf dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "typescript": "^5.9.2"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  }
+}
