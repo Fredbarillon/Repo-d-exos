@@ -23,6 +23,7 @@ fun main() {
     val book =library[0] as Books
     val book2 = library[0] as Books
     val book3 = library[1] as Books
+    val magazine = library[7] as Magazine
     book.displayInfos()
 
     try {
@@ -45,6 +46,12 @@ fun main() {
 
     try {
         book3.bringBack()
+    }catch (e: Exception){
+        println("Erreur: ${e.message}")
+    }
+
+    try {
+        magazine.search()
     }catch (e: Exception){
         println("Erreur: ${e.message}")
     }
