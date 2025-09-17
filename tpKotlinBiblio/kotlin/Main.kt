@@ -14,7 +14,6 @@ fun main() {
         library.add(Books("Livre 4",  2022,"Auteur4", 15, Genre.BIOGRAPHIE))
         library.add(Books("Livre 5", 1955,"Auteur5", 462,Genre.HISTORIQUE))
 
-        // 3 magazines (number, title, editionYear)
         library.add(Magazine(1, "Magazine 1", 2023))
         library.add(Magazine(2, "Magazine 2", 2024))
         library.add(Magazine(3, "Magazine 3", 2025))
@@ -22,7 +21,8 @@ fun main() {
     library.forEach { it.displayInfos() }
 
     val book =library[0] as Books
-
+    val book2 = library[0] as Books
+    val book3 = library[1] as Books
     book.displayInfos()
 
     try {
@@ -31,6 +31,21 @@ fun main() {
         println("Erreur: ${e.message}")
     }
 
+    try {
+        book2.lend()
+    }catch (e: Exception){
+        println("Erreur: ${e.message}")
+    }
 
+    try{
+        book.bringBack()
+    }catch (e: Exception){
+        println("Erreur: ${e.message}")
+    }
 
+    try {
+        book3.bringBack()
+    }catch (e: Exception){
+        println("Erreur: ${e.message}")
+    }
 }
