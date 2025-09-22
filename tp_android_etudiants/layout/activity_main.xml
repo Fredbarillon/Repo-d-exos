@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/uni_logo"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/uni_logo" />
+
+        <EditText
+            android:id="@+id/full_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Nom complet"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/studentNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Numéro étudiant (8 chiffres)"
+            android:inputType="number" />
+
+        <RadioGroup
+            android:id="@+id/department_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radio_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Informatique" />
+
+            <RadioButton
+                android:id="@+id/radio_math"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mathématiques" />
+
+            <RadioButton
+                android:id="@+id/radio_physics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Physique" />
+
+            <RadioButton
+                android:id="@+id/radio_chemistry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chimie" />
+        </RadioGroup>
+
+        <Spinner
+            android:id="@+id/student_level"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:tooltipText="Niveau d'étude" />
+
+        <CheckBox
+            android:id="@+id/scholarship"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Boursier" />
+
+        <Switch
+            android:id="@+id/library_access"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Accès à la bibliothèque" />
+
+        <Button
+            android:id="@+id/valid_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Valider" />
+    </LinearLayout>
+</ScrollView>

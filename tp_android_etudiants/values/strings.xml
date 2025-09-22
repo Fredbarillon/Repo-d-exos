@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Générateur de Carte d\'Identité Étudiante</string>
+    <string-array name="student_level_array">
+        <item>L1</item>
+        <item>L2</item>
+        <item>L3</item>
+        <item>M1</item>
+        <item>M2</item>
+    </string-array>
+</resources>
